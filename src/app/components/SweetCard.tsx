@@ -1,42 +1,64 @@
 'use client';
 
+import React from 'react';
 import { Sweet } from '@/models/Sweet';
+import { FiShoppingCart, FiPlusSquare, FiEdit, FiTrash2 } from 'react-icons/fi';
+import { motion } from 'framer-motion';
 
 interface SweetCardProps {
   sweet: Sweet;
+  onPurchase: (sweet: Sweet) => void;
+  onRestock: (sweet: Sweet) => void;
   onEdit: (sweet: Sweet) => void;
   onDelete: (id: number) => void;
 }
 
-const getStockLevelColor = (quantity: number) => {
-  if (quantity < 10) return 'text-red-500';
-  if (quantity < 25) return 'text-yellow-500';
-  return 'text-green-500';
+const SweetCard: React.FC<SweetCardProps> = ({ sweet, onPurchase, onRestock, onEdit, onDelete }) => {
+  const getStockColor = () => {
+    if (sweet.stock === 0) return 'bg-red-500';
+    if (sweet.stock < 10) return 'bg-yellow-500';
+    return 'bg-green-500';
+  };
+
+  return (
+    <motion.div 
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3 }}
+      whileHover={{ y: -5, scale: 1.03 }}
+      className="bg-card rounded-xl shadow-lg overflow-hidden flex flex-col"
+    >
+      <div className={`w-full h-2 ${getStockColor()}`}></div>
+      
+      <div className="p-6 flex-grow">
+        <div className="flex justify-between items-start mb-2">
+            <div>
+                <h3 className="text-xl font-bold text-primary">{sweet.name}</h3>
+                <p className="text-sm text-muted-foreground">{sweet.category}</p>
+            </div>
+            <p className="text-2xl font-bold text-secondary">${sweet.price.toFixed(2)}</p>
+        </div>
+        <p className="text-sm text-muted-foreground mt-4">
+          <span className="font-bold">{sweet.stock}</span> units in stock
+        </p>
+      </div>
+
+      <div className="bg-background/50 p-3 flex justify-around items-center">
+        <button onClick={() => onPurchase(sweet)} title="Purchase" className="p-2 rounded-full text-muted-foreground hover:bg-blue-500/10 hover:text-blue-500 transition-colors">
+            <FiShoppingCart size={20} />
+        </button>
+        <button onClick={() => onRestock(sweet)} title="Restock" className="p-2 rounded-full text-muted-foreground hover:bg-green-500/10 hover:text-green-500 transition-colors">
+            <FiPlusSquare size={20} />
+        </button>
+        <button onClick={() => onEdit(sweet)} title="Edit" className="p-2 rounded-full text-muted-foreground hover:bg-yellow-500/10 hover:text-yellow-500 transition-colors">
+            <FiEdit size={20} />
+        </button>
+        <button onClick={() => onDelete(sweet.id)} title="Delete" className="p-2 rounded-full text-muted-foreground hover:bg-red-500/10 hover:text-red-500 transition-colors">
+            <FiTrash2 size={20} />
+        </button>
+      </div>
+    </motion.div>
+  );
 };
 
-export default function SweetCard({ sweet, onEdit, onDelete }: SweetCardProps) {
-  return (
-    <div className="bg-card shadow-lg rounded-lg p-6 flex flex-col justify-between transition-transform transform hover:scale-105">
-      <div>
-        <div className="mb-4">
-          {/* Placeholder for an image */}
-          <div className="w-full h-32 bg-background rounded-md mb-4"></div>
-          <h2 className="text-2xl font-bold text-foreground">{sweet.name}</h2>
-          <p className="text-muted-foreground">{sweet.category}</p>
-        </div>
-        <div className="flex justify-between items-center mb-4">
-          <p className="text-lg font-semibold text-secondary">${sweet.price.toFixed(2)}</p>
-          <p className={`font-semibold ${getStockLevelColor(sweet.quantity)}`}>
-            In Stock: {sweet.quantity}
-          </p>
-        </div>
-      </div>
-      <div className="flex justify-between gap-2">
-        <button className="bg-blue-600 text-white py-1 px-3 rounded-md text-sm hover:bg-blue-700 transition-colors">Purchase</button>
-        <button className="bg-green-600 text-white py-1 px-3 rounded-md text-sm hover:bg-green-700 transition-colors">Restock</button>
-        <button onClick={() => onEdit(sweet)} className="bg-yellow-500 text-white py-1 px-3 rounded-md text-sm hover:bg-yellow-600 transition-colors">Edit</button>
-        <button onClick={() => onDelete(sweet.id)} className="bg-red-600 text-white py-1 px-3 rounded-md text-sm hover:bg-red-700 transition-colors">Delete</button>
-      </div>
-    </div>
-  );
-} 
+export default SweetCard; 

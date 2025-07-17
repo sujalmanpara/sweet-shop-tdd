@@ -9,12 +9,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: '#181a1b',
-        foreground: '#e8e6e3',
-        primary: '#d9466f',
-        secondary: '#e67a42',
-        muted: '#3c3f41',
-        card: '#1f2122',
+        background: '#111827', // Dark Gray (gray-900)
+        foreground: '#e5e7eb', // Light Gray (gray-200)
+        card: '#1f2937',      // Lighter Gray for cards (gray-800)
+        primary: '#d95f76',   // Vibrant Pink
+        secondary: '#e69842', // Vibrant Orange
+        muted: '#9ca3af',     // Muted Gray (gray-400)
+        border: '#374151',    // Border Color (gray-700)
+        input: '#374151',
+        ring: '#e69842',
       },
       borderRadius: {
         lg: `0.75rem`,

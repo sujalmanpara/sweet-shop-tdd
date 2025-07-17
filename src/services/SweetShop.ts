@@ -7,8 +7,8 @@ class SweetShop {
     if (this.sweets.has(sweet.id)) {
       throw new Error('A sweet with this ID already exists.');
     }
-    if (sweet.price < 0 || sweet.quantity < 0) {
-      throw new Error('Price and quantity must not be negative.');
+    if (sweet.price < 0 || sweet.stock < 0) {
+      throw new Error('Price and stock must not be negative.');
     }
     this.sweets.set(sweet.id, sweet);
   }
@@ -56,11 +56,11 @@ class SweetShop {
       return { success: false, message: 'Sweet not found.' };
     }
 
-    if (sweet.quantity < quantity) {
+    if (sweet.stock < quantity) {
       return { success: false, message: 'Insufficient stock.' };
     }
 
-    sweet.quantity -= quantity;
+    sweet.stock -= quantity;
     this.sweets.set(id, sweet);
 
     return { success: true, message: 'Purchase successful.' };
@@ -77,7 +77,7 @@ class SweetShop {
       throw new Error('Restock quantity must be positive.');
     }
 
-    sweet.quantity += quantity;
+    sweet.stock += quantity;
     this.sweets.set(id, sweet);
 
     return { success: true, message: 'Restock successful.' };

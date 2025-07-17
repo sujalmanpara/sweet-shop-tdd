@@ -1,27 +1,44 @@
 'use client';
 
-import { ReactNode } from 'react';
+import React from 'react';
+import { FiX } from 'react-icons/fi';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
-  children: ReactNode;
+  children: React.ReactNode;
 }
 
-export default function Modal({ isOpen, onClose, children }: ModalProps) {
-  if (!isOpen) return null;
-
+const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center">
-      <div className="bg-card rounded-lg p-8 shadow-2xl relative w-full max-w-md">
-        <button
-          onClick={onClose}
-          className="absolute top-2 right-2 text-foreground text-2xl font-bold hover:text-primary transition-colors"
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center"
         >
-          &times;
-        </button>
-        {children}
-      </div>
-    </div>
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.9, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="bg-card rounded-lg shadow-2xl p-8 relative w-full max-w-md"
+          >
+            <button
+              onClick={onClose}
+              className="absolute top-4 right-4 text-muted-foreground hover:text-primary transition-colors"
+            >
+              <FiX size={24} />
+            </button>
+            {children}
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
-} 
+};
+
+export default Modal; 
