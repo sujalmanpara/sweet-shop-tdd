@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "jest"
   },
   "dependencies": {
     "next": "15.4.1",
@@ -28,6 +29,7 @@
     "jest-environment-jsdom": "^30.0.4",
     "tailwindcss": "^4",
     "ts-jest": "^29.4.0",
+    "ts-node": "^10.9.2",
     "typescript": "^5"
   }
 }
