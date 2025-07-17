@@ -1,5 +1,5 @@
 import SweetShop from '../services/SweetShop';
-import { Sweet } from '../models/Sweet';
+import { Sweet, SearchCriteria, PurchaseResult } from '../models/Sweet';
 
 describe('SweetShop', () => {
   it('should add a new sweet to the shop', () => {
@@ -112,6 +112,50 @@ describe('SweetShop', () => {
       const results = sweetShop.searchSweets({ category: 'Muff' });
       expect(results).toHaveLength(1);
       expect(results[0]).toEqual(sweet3);
+    });
+  });
+
+  describe('purchaseSweet', () => {
+    let sweetShop: SweetShop;
+    const sweetId = 1;
+    const initialQuantity = 10;
+
+    beforeEach(() => {
+      sweetShop = new SweetShop();
+      const sweet: Sweet = {
+        id: sweetId,
+        name: 'Caramel',
+        price: 1.25,
+        quantity: initialQuantity,
+        category: 'Chewy',
+      };
+      sweetShop.addSweet(sweet);
+    });
+
+    it('should decrease the quantity of a sweet after a successful purchase', () => {
+      const purchaseQuantity = 3;
+      const result: PurchaseResult = sweetShop.purchaseSweet(sweetId, purchaseQuantity);
+
+      expect(result.success).toBe(true);
+      expect(result.message).toBe('Purchase successful.');
+      const updatedSweet = sweetShop.getAllSweets().find(s => s.id === sweetId);
+      expect(updatedSweet?.quantity).toBe(initialQuantity - purchaseQuantity);
+    });
+
+    it('should return an error if there is insufficient stock', () => {
+      const purchaseQuantity = 15;
+      const result: PurchaseResult = sweetShop.purchaseSweet(sweetId, purchaseQuantity);
+
+      expect(result.success).toBe(false);
+      expect(result.message).toBe('Insufficient stock.');
+      const sweet = sweetShop.getAllSweets().find(s => s.id === sweetId);
+      expect(sweet?.quantity).toBe(initialQuantity);
+    });
+
+    it('should return an error if the sweet is not found', () => {
+      const result: PurchaseResult = sweetShop.purchaseSweet(999, 1);
+      expect(result.success).toBe(false);
+      expect(result.message).toBe('Sweet not found.');
     });
   });
 }); 
