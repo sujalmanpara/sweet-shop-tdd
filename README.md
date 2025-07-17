@@ -37,15 +37,32 @@ This project follows strict **Test-Driven Development** with Red-Green-Refactor 
 ### 🔴 Red Phase - Failing Tests
 
 *Writing failing tests first to define expected behavior. Tests fail as expected since the functionality doesn't exist yet.*
+<img width="652" height="181" alt="Screenshot 2025-07-17 160531" src="https://github.com/user-attachments/assets/a03d5006-0c28-4a9c-8257-8d23636ca8bf" />
+<img width="717" height="207" alt="Screenshot 2025-07-17 114317" src="https://github.com/user-attachments/assets/b4536f89-092c-401c-ab45-2517a5f1d3a0" />
+
+
 
 ### 🟢 Green Phase - Passing Tests
 ![Green Phase] code to make tests pass. Focus on making tests green with the simplest possible solution.*
+<img width="702" height="251" alt="Screenshot 2025-07-17 114443" src="https://github.com/user-attachments/assets/0f7f5a50-5159-428b-a5c8-9225dd3ee87e" />
+<img width="761" height="223" alt="Screenshot 2025-07-17 165305" src="https://github.com/user-attachments/assets/54d5b441-2720-4f9a-a809-a0d6d0e62fee" />
+
+
+
+
+
+
 
 ### 🔵 Refactor Phase - Code Improvement
 
-*Improving code quality, performance, and maintainability while keeping all tests passing.*
+*Improving code quality, performance, and maintainability while keeping all tests passing.
 
-## 📱 Screenshots
+<img width="714" height="369" alt="Screenshot 2025-07-17 172030" src="https://github.com/user-attachments/assets/d775a931-77ed-40b8-86bc-cc22cb8fd66f" />
+<img width="727" height="429" alt="Screenshot 2025-07-17 160943" src="https://github.com/user-attachments/assets/fae9fc1a-2d41-4d30-9441-c9d777f07436" />
+
+
+
+
 
 ### Dashboard Overview
 <img width="1919" height="762" alt="image" src="https://github.com/user-attachments/assets/85b83421-5a17-4324-9c94-4af5a4d23e8a" />
