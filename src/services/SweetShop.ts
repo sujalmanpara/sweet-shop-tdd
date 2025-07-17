@@ -73,6 +73,10 @@ class SweetShop {
       return { success: false, message: 'Sweet not found.' };
     }
 
+    if (quantity <= 0) {
+      throw new Error('Restock quantity must be positive.');
+    }
+
     sweet.quantity += quantity;
     this.sweets.set(id, sweet);
 

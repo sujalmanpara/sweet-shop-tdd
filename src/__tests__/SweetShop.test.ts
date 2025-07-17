@@ -191,5 +191,10 @@ describe('SweetShop', () => {
       expect(result.success).toBe(false);
       expect(result.message).toBe('Sweet not found.');
     });
+
+    it('should throw an error if the restock quantity is not positive', () => {
+      expect(() => sweetShop.restockSweet(sweetId, -5)).toThrow('Restock quantity must be positive.');
+      expect(() => sweetShop.restockSweet(sweetId, 0)).toThrow('Restock quantity must be positive.');
+    });
   });
 }); 
