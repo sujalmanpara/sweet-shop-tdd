@@ -26,8 +26,8 @@
 ## 🛠️ Tech Stack
 
 - **Frontend**: Next.js 14, TypeScript, Tailwind CSS
-- **Testing**: Jest, React Testing Library, ts-jest
-- **Development**: Cursor (AI-assisted), ESLint, Prettier
+- **Testing**: Jest, ts-jest
+- **Development**: Ai assisted .
 - **Architecture**: Component-based, Service layer, Type-safe
 
 ## 🔄 TDD Journey
@@ -39,7 +39,7 @@ This project follows strict **Test-Driven Development** with Red-Green-Refactor 
 *Writing failing tests first to define expected behavior. Tests fail as expected since the functionality doesn't exist yet.*
 
 ### 🟢 Green Phase - Passing Tests
-![Green Phase](./screenshots code to make tests pass. Focus on making tests green with the simplest possible solution.*
+![Green Phase] code to make tests pass. Focus on making tests green with the simplest possible solution.*
 
 ### 🔵 Refactor Phase - Code Improvement
 
@@ -106,5 +106,4 @@ git commit -m "AI: Generate comprehensive search functionality"
 ```
 
 
-  Built with ❤️ using TDD principles and AI assistance
-  © 2025 Sweet Shop Management System
+
