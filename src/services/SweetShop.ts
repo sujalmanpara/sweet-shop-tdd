@@ -14,7 +14,7 @@ class SweetShop {
   }
 
   getAllSweets(): Sweet[] {
-    return Array.from(this.sweets.values());
+    return Array.from(this.sweets.values()).map(sweet => ({ ...sweet }));
   }
 
   deleteSweet(id: number): boolean {

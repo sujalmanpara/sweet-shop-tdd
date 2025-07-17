@@ -61,4 +61,16 @@ describe('SweetShop', () => {
     expect(sweets).toContainEqual(sweet1);
     expect(sweets).toContainEqual(sweet2);
   });
+
+  it('should return an immutable copy of the sweets', () => {
+    const sweetShop = new SweetShop();
+    const sweet: Sweet = { id: 1, name: 'Jelly Bean', price: 0.2, quantity: 500, category: 'Jelly' };
+    sweetShop.addSweet(sweet);
+
+    const sweets = sweetShop.getAllSweets();
+    sweets[0].quantity = 10; 
+
+    const sweetsAgain = sweetShop.getAllSweets();
+    expect(sweetsAgain[0].quantity).toBe(500);
+  });
 }); 
