@@ -65,6 +65,19 @@ class SweetShop {
 
     return { success: true, message: 'Purchase successful.' };
   }
+
+  restockSweet(id: number, quantity: number): PurchaseResult {
+    const sweet = this.sweets.get(id);
+
+    if (!sweet) {
+      return { success: false, message: 'Sweet not found.' };
+    }
+
+    sweet.quantity += quantity;
+    this.sweets.set(id, sweet);
+
+    return { success: true, message: 'Restock successful.' };
+  }
 }
 
 export default SweetShop; 
