@@ -1,4 +1,4 @@
-import { Sweet, SearchCriteria } from '../models/Sweet';
+import { Sweet, SearchCriteria, PurchaseResult } from '../models/Sweet';
 
 class SweetShop {
   private sweets: Map<number, Sweet> = new Map();
@@ -47,6 +47,23 @@ class SweetShop {
     }
 
     return filteredSweets.map(sweet => ({ ...sweet }));
+  }
+
+  purchaseSweet(id: number, quantity: number): PurchaseResult {
+    const sweet = this.sweets.get(id);
+
+    if (!sweet) {
+      return { success: false, message: 'Sweet not found.' };
+    }
+
+    if (sweet.quantity < quantity) {
+      return { success: false, message: 'Insufficient stock.' };
+    }
+
+    sweet.quantity -= quantity;
+    this.sweets.set(id, sweet);
+
+    return { success: true, message: 'Purchase successful.' };
   }
 }
 
