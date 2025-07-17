@@ -34,4 +34,19 @@ describe('SweetShop', () => {
     const invalidSweet: Sweet = { id: 3, name: 'Invalid Sweet', price: 1, quantity: -10, category: 'Invalid' };
     expect(() => sweetShop.addSweet(invalidSweet)).toThrow('Price and quantity must not be negative.');
   });
+
+  it('should delete a sweet by its ID', () => {
+    const sweetShop = new SweetShop();
+    const sweet1: Sweet = { id: 1, name: 'Lollipop', price: 0.5, quantity: 200, category: 'Candy' };
+    sweetShop.addSweet(sweet1);
+    const result = sweetShop.deleteSweet(1);
+    expect(result).toBe(true);
+    expect(sweetShop.getAllSweets()).not.toContainEqual(sweet1);
+  });
+
+  it('should return false if the sweet to delete is not found', () => {
+    const sweetShop = new SweetShop();
+    const result = sweetShop.deleteSweet(999);
+    expect(result).toBe(false);
+  });
 }); 
