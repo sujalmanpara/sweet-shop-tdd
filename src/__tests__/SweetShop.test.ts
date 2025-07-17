@@ -158,4 +158,38 @@ describe('SweetShop', () => {
       expect(result.message).toBe('Sweet not found.');
     });
   });
+
+  describe('restockSweet', () => {
+    let sweetShop: SweetShop;
+    const sweetId = 1;
+    const initialQuantity = 10;
+
+    beforeEach(() => {
+      sweetShop = new SweetShop();
+      const sweet: Sweet = {
+        id: sweetId,
+        name: 'Gummy Bears',
+        price: 2.5,
+        quantity: initialQuantity,
+        category: 'Gummy',
+      };
+      sweetShop.addSweet(sweet);
+    });
+
+    it('should increase the quantity of a sweet after a successful restock', () => {
+      const restockQuantity = 20;
+      const result = sweetShop.restockSweet(sweetId, restockQuantity);
+
+      expect(result.success).toBe(true);
+      expect(result.message).toBe('Restock successful.');
+      const updatedSweet = sweetShop.getAllSweets().find(s => s.id === sweetId);
+      expect(updatedSweet?.quantity).toBe(initialQuantity + restockQuantity);
+    });
+
+    it('should return an error if the sweet to restock is not found', () => {
+      const result = sweetShop.restockSweet(999, 10);
+      expect(result.success).toBe(false);
+      expect(result.message).toBe('Sweet not found.');
+    });
+  });
 }); 
