@@ -1,4 +1,4 @@
-# 🍬 Sweet Shop Management System
+### Sweet Shop Management System
 
 
   
@@ -9,16 +9,19 @@
 
 
 
-  🎯 A modern, test-driven inventory management system for sweet shops
+  # A modern, test-driven inventory management system for sweet shops
   Built with Next.js, TypeScript, and Jest following TDD principles
  
   
-  **🚀 Development Approach:**
+  ** Development Approach:**
 
-This Sweet Shop Management System was built using **TDD principles** 🔴🟢🔵 with **Next.js + TypeScript** and **Jest** testing. Following **Incubyte's AI-first philosophy** 🤖, while human contributions focused on **writing all test cases** 🧪, **design decisions** 🎨, **project planning** 📝, and **creative UI elements** ✨. The development process emphasized **small commits** 📦 demonstrating the TDD journey, with AI commits marked "AI:" and human contributions highlighting **test-driven thinking** and **strategic architecture**. This **human test design + AI implementation** collaboration resulted in a fully functional system with **95%+ test coverage** ✅, **responsive design** 📱, and **clean architecture** 🏗️, showcasing effective AI tool utilization guided by comprehensive human-written test suites.
+This Sweet Shop Management System was built using **TDD principles**  with **Next.js + TypeScript** and **Jest** testing. Following **Incubyte's AI-first philosophy** , while human contributions focused on **writing all test cases** , **design decisions** , **project planning** , and **creative UI elements**. The development process emphasized **small commits**  demonstrating the TDD journey, with AI commits marked "AI:" and human contributions highlighting **test-driven thinking** and **strategic architecture**. This **human test design + AI implementation** collaboration resulted in a fully functional system with **95%+ test coverage** , **responsive design** , and **clean architecture** , showcasing effective AI tool utilization guided by comprehensive human-written test suites.
+
+🎯 User Role Architecture:
+I observed ambiguity around user roles in the requirements. I assumed a single unified user (not separate admin and user roles), since the timeline and scope suggest a focus on core logic over multi-role systems. This decision allowed for streamlined development while maintaining all essential inventory management functionality.
 
 
-## 🚀 Features
+##  Features
 
 - ✅ **Add Sweets** - Create new inventory entries with validation
 - ✅ **Delete Sweets** - Remove items from inventory
