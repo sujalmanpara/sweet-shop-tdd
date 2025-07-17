@@ -107,5 +107,11 @@ describe('SweetShop', () => {
       const results = sweetShop.searchSweets({ name: 'Non-existent' });
       expect(results).toHaveLength(0);
     });
+
+    it('should find sweets by partial category match', () => {
+      const results = sweetShop.searchSweets({ category: 'Muff' });
+      expect(results).toHaveLength(1);
+      expect(results[0]).toEqual(sweet3);
+    });
   });
 }); 

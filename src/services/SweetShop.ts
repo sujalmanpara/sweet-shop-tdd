@@ -32,7 +32,7 @@ class SweetShop {
 
     if (criteria.category) {
       filteredSweets = filteredSweets.filter(sweet =>
-        sweet.category.toLowerCase() === criteria.category!.toLowerCase()
+        sweet.category.toLowerCase().includes(criteria.category!.toLowerCase())
       );
     }
 
