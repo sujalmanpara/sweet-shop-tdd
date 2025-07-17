@@ -48,7 +48,8 @@ This project follows strict **Test-Driven Development** with Red-Green-Refactor 
 ## 📱 Screenshots
 
 ### Dashboard Overview
-![Dashboard](./screenshots/ Add Sweet Form
+<img width="1919" height="762" alt="image" src="https://github.com/user-attachments/assets/85b83421-5a17-4324-9c94-4af5a4d23e8a" />
+
 
 
 ## 🧪 Testing
@@ -74,10 +75,6 @@ npm run dev
 ```
 
 ## 🤖 AI Collaboration
-
-- **AI Commits**: 67% (marked with "AI:" prefix)
-- **Human Commits**: 33% (design, planning, creativity)
-- **Total Commits**: 89
 - **Development Approach**: Human planning + AI implementation
 
 ## 📊 Project Stats
@@ -92,7 +89,7 @@ npm run dev
 
 - **TDD Mastery** - Red-Green-Refactor cycles
 - **TypeScript** - Advanced type system usage
-- **AI-Assisted Development** - Effective Cursor collaboration
+- **AI-Assisted Development** - Effective AI Tools collaboration
 - **Modern React** - Next.js patterns and best practices
 
 ## 📝 Git Workflow
