@@ -49,4 +49,16 @@ describe('SweetShop', () => {
     const result = sweetShop.deleteSweet(999);
     expect(result).toBe(false);
   });
+
+  it('should return all sweets in the shop', () => {
+    const sweetShop = new SweetShop();
+    const sweet1: Sweet = { id: 1, name: 'Caramel', price: 1, quantity: 100, category: 'Chewy' };
+    const sweet2: Sweet = { id: 2, name: 'Toffee', price: 1.5, quantity: 150, category: 'Chewy' };
+    sweetShop.addSweet(sweet1);
+    sweetShop.addSweet(sweet2);
+    const sweets = sweetShop.getAllSweets();
+    expect(sweets).toHaveLength(2);
+    expect(sweets).toContainEqual(sweet1);
+    expect(sweets).toContainEqual(sweet2);
+  });
 }); 
