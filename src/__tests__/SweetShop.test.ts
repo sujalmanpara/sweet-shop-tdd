@@ -73,4 +73,39 @@ describe('SweetShop', () => {
     const sweetsAgain = sweetShop.getAllSweets();
     expect(sweetsAgain[0].quantity).toBe(500);
   });
+
+  describe('searchSweets', () => {
+    const sweetShop = new SweetShop();
+    const sweet1: Sweet = { id: 1, name: 'Chocolate Cake', price: 20, quantity: 10, category: 'Cake' };
+    const sweet2: Sweet = { id: 2, name: 'Vanilla Cake', price: 18, quantity: 12, category: 'Cake' };
+    const sweet3: Sweet = { id: 3, name: 'Chocolate Muffin', price: 5, quantity: 30, category: 'Muffin' };
+    sweetShop.addSweet(sweet1);
+    sweetShop.addSweet(sweet2);
+    sweetShop.addSweet(sweet3);
+
+    it('should find sweets by name', () => {
+      const results = sweetShop.searchSweets({ name: 'Cake' });
+      expect(results).toHaveLength(2);
+      expect(results).toContainEqual(sweet1);
+      expect(results).toContainEqual(sweet2);
+    });
+
+    it('should find sweets by category', () => {
+      const results = sweetShop.searchSweets({ category: 'Muffin' });
+      expect(results).toHaveLength(1);
+      expect(results[0]).toEqual(sweet3);
+    });
+
+    it('should find sweets by price range', () => {
+      const results = sweetShop.searchSweets({ priceRange: { min: 15, max: 25 } });
+      expect(results).toHaveLength(2);
+      expect(results).toContainEqual(sweet1);
+      expect(results).toContainEqual(sweet2);
+    });
+
+    it('should return an empty array if no sweets match the criteria', () => {
+      const results = sweetShop.searchSweets({ name: 'Non-existent' });
+      expect(results).toHaveLength(0);
+    });
+  });
 }); 
