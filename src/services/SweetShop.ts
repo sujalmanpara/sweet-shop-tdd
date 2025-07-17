@@ -16,6 +16,12 @@ class SweetShop {
   getAllSweets(): Sweet[] {
     return this.sweets;
   }
+
+  deleteSweet(id: number): boolean {
+    const initialLength = this.sweets.length;
+    this.sweets = this.sweets.filter(sweet => sweet.id !== id);
+    return this.sweets.length < initialLength;
+  }
 }
 
 export default SweetShop; 
